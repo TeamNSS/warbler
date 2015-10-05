@@ -8,4 +8,8 @@ router.get('/', function(req, res, next) {
   res.render('login', { title: 'Warble' });
 });
 
+router.post('/', function(req, res, next) {
+  res.render('index', { title: 'Warble' });
+});
+
 module.exports = router;
