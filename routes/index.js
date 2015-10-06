@@ -1,4 +1,5 @@
 var express = require('express');
+var database = require('../database');
 var router = express.Router();
 
 /* GET home page. */
@@ -9,6 +10,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+  var userLogin = req.body;
+  var name = userLogin.loginUserInput;
+  var userDatabase = database.get("users", name);
+  console.log(userLogin);
+  console.log(name);
+  console.log(userDatabase);
   res.render('index', { title: 'Warble' });
 });
 
