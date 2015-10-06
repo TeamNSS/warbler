@@ -5,8 +5,8 @@ var database = {
 		 Dan: {username:'Dan', password:'123', bio:"Dude!"},
 		// Tom: {username:'Tom', password:'456', bio:"Avast!"}
 	},
-	tweets: [
-		// {id:0, text:'W00t!', author:'Dan', timestamp:1444000000000},
+	warbles: [
+		 {id:0, text:'W00t!', author:'Dan', timestamp:1444000000000},
 		// {id:1, text:'Yikes!', author:'Dan', timestamp:1444000010000},
 		// {id:2, text:'Ahoy @Dan!', author:'Tom', timestamp:1444000100000},
 		// {id:3, text:'Zounds!', author:'Tom', timestamp:1444100000000},
@@ -15,13 +15,12 @@ var database = {
 
 	]
 }
-
 var newKeyFn = {
 	users: function(obj) {
 		return obj.username;
 	},
 	tweets: function(obj) {
-		var id = database.tweets.length;
+		var id = database.warbles.length;
 		obj.id = id;
 		return id;
 	}

@@ -1,4 +1,5 @@
 var express = require('express');
+var database = require('../database');
 var router = express.Router();
 
 /* GET users listing. */
