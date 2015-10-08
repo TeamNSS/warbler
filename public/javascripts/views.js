@@ -1,4 +1,4 @@
-var UserView = Backbone.View.extend ({
+var UserView = Backbone.View.extend ({ //displays the user's public profile (username and bio), a logout button, and all views below.
   render: function(){
 
   },
@@ -7,7 +7,7 @@ var UserView = Backbone.View.extend ({
   }
 })
 
-var CreatePostView = Backbone.View.extend ({
+var CreatePostView = Backbone.View.extend ({ //display a text input area and a "Post It" button which submits the new post.
   render: function() {
 
   },
@@ -16,7 +16,9 @@ var CreatePostView = Backbone.View.extend ({
   }
 })
 
-var RecentPostsView = Backbone.View.extend ({
+var RecentPostsView = Backbone.View.extend ({ //a list of the 5 most recent posts made by anyone.
+
+
   render: function(){
 
   },
@@ -25,7 +27,7 @@ var RecentPostsView = Backbone.View.extend ({
   }
 })
 
-var MyPostsView = Backbone.View.extend ({
+var MyPostsView = Backbone.View.extend ({ //a list of all the posts made by the current user.
   render: function(){
 
   },
@@ -35,7 +37,7 @@ var MyPostsView = Backbone.View.extend ({
 })
 
 //need this view when set up bonus "mention" feature
-var MyMentionsViews = Backbone.View.extend ({
+var MyMentionsViews = Backbone.View.extend ({ // a list of all the posts made which mention the current user (by including @username).
   render: function(){
 
   },

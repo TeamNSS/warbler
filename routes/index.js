@@ -19,12 +19,13 @@ router.post('/', function(req, res, next) {
   var name = userLogin.loginUserInput;
   var password = userLogin.loginPassInput;
   var userDatabase = database.get("users", name);
+  var bio = userDatabase.bio;
   //if an object for this user's object is found in our database and password matches,
   //render the main page (index.js).  If this user's object is NOT found and/or enters an
   //incorrect password, then re-render the login.js page with an error that says their
   //username or password is incorrect.
   if (userDatabase !== undefined && password === userDatabase.password){
-    res.render('index', { title: 'Warbler', intro: 'Welcome back', username: name });
+    res.render('index', { title: 'Warbler', intro: 'Welcome back', username: name, bio:bio });
   } else {
     res.render('login', { title: 'Warbler', errMsg: 'Incorrect username or password.' });
   }
