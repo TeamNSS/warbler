@@ -1,18 +1,26 @@
+
 var UserView = Backbone.View.extend ({ //displays the user's public profile (username and bio), a logout button, and all views below.
   render: function(){
+    var logoutBtn = '<form id= "logoutBtn" action = "/" method="get"><input type="submit" value = "Logout"></form>';
+    this.$el.html(logoutBtn);
+
 
   },
-  initialize: function(){
 
-  }
 })
 
 var CreatePostView = Backbone.View.extend ({ //display a text input area and a "Post It" button which submits the new post.
   render: function() {
-
+    var warble = '<textarea id="warble"></textarea><br>';
+    var postWarble = '<button id="postWarble">Warble!</button>';
+    this.$el.html(warble + postWarble);
   },
-  initialize: function(){
-
+  events : {
+    "click #postWarble" : "savePost"
+  },
+  savePost: function(){
+    var text = $('#warble').val();
+    console.log(text);
   }
 })
 
