@@ -10,3 +10,7 @@ a {
 .error {
   color: red;
 }
+
+#createPostView{
+background-color: yellow;
+}

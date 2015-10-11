@@ -1,3 +1,5 @@
+console.log('public/javascripts/models.js');
+
 var UserModel = Backbone.Model.extend ({
   defaults: {
     username: '',
