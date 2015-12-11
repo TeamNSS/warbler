@@ -1,6 +1,13 @@
+console.log('routes/index.js');
+
 var express = require('express');
-var database = require('../database');
 var router = express.Router();
+
+//these three lines make database accessible
+var config = require('../config');
+var orch = require('orchestrate');
+var db = orch(config.dbkey);
+
 
 /* GET home page. */
 /*Currently, routes immediately to login screen, will change in the future to see home page if already logged in
@@ -11,6 +18,7 @@ with use of cookies*/
 //instead of the login page if user already signed in earlier (cookies...yum)
 router.get('/', function(req, res, next) {
   res.render('login', { title: 'Warbler' });
+  console.log('routes/index.js/router.get');
 });
 
 //this is the route that occurs when user hits login button
@@ -18,19 +26,23 @@ router.post('/', function(req, res, next) {
   var userLogin = req.body;
   var name = userLogin.loginUserInput;
   var password = userLogin.loginPassInput;
-  var userDatabase = database.get("users", name);
-  var bio = userDatabase.bio;
-  //if an object for this user's object is found in our database and password matches,
-  //render the main page (index.hbs).  If this user's object is NOT found and/or enters an
-  //incorrect password, then re-render the login.js page with an error that says their
-  //username or password is incorrect.
-  if (userDatabase !== undefined && password === userDatabase.password){
-    res.render('index', { title: 'Warbler', intro: 'Welcome back', username: name, bio:bio });
-  } else {
-    res.render('login', { title: 'Warbler', errMsg: 'Incorrect username or password.' });
-  }
+//order
+  db.get("users", name).then(function (reply) { //reply is return value of get
+//eat
+    var userDatabase = reply.body;
+    console.log(userDatabase);
+    var bio = userDatabase.bio;
+    //if an object for this user's object is found in our database and password matches,
+    //render the main page (index.hbs).  If this user's object is NOT found and/or enters an
+    //incorrect password, then re-render the login.js page with an error that says their
+    //username or password is incorrect.
+    if (userDatabase !== undefined && password === userDatabase.password){
+      res.render('index', { title: 'Warbler', intro: 'Welcome back', username: name, bio:bio });
+    } else {
+      res.render('login', { title: 'Warbler', errMsg: 'Incorrect username or password.' });
+    }
+  })
 });
-
 //register routes
 //this route renders the register page when user clicks the Sign Up button on the login page.
 router.get('/register', function(req, res, next) {

@@ -1,3 +1,5 @@
+console.log('public/javascripts/main.js');
+
 $(document).ready( function(){
 	var userView = new UserView();
 	userView.render();

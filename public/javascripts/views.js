@@ -1,3 +1,4 @@
+console.log('public/javascripts/views.js');
 
 var UserView = Backbone.View.extend ({ //displays the user's public profile (username and bio), a logout button, and all views below.
   render: function(){
@@ -28,7 +29,7 @@ var RecentPostsView = Backbone.View.extend ({ //a list of the 5 most recent post
 
 
   render: function(){
-
+    
   },
   initialize: function(){
 

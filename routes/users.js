@@ -1,3 +1,5 @@
+console.log('routes/users.js');
+
 var express = require('express');
 var database = require('../database');
 var router = express.Router();
@@ -8,3 +10,6 @@ router.post('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+//alternative place to put routes, we can put all routes in index file. Or we can have the routes in 2 places
